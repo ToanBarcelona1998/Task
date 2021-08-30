@@ -14,9 +14,9 @@ dependencies:
   cupertino_icons: ^1.0.0
   date_picker_timeline:
   flutter_icons:
-#  flutter_local_notifications:
+  flutter_local_notifications:
   flutter_staggered_animations:
-#  flutter_svg:
+  flutter_native_timezone:
   get:
   get_storage:
   google_fonts:

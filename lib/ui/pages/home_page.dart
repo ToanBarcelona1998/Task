@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_management/controllers/task_controller.dart';
 import 'package:task_management/models/task.dart';
+import 'package:task_management/services/notification_services.dart';
 import 'package:task_management/ui/pages/add_task_page.dart';
 import 'package:task_management/ui/size_config.dart';
 import 'package:task_management/ui/theme.dart';
@@ -131,7 +132,9 @@ class _HomePageState extends State<HomePage> {
         leading: GestureDetector(
           onTap: () {
             ThemeService().switchTheme();
-
+            NotifyHelper().displayNotification(title: "Theme Changed", body: Get.isDarkMode
+                ? "Light theme activated."
+                : "Dark theme activated");
           },
           child: Icon(
               Get.isDarkMode ? FlutterIcons.sun_fea : FlutterIcons.moon_fea,
