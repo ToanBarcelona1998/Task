@@ -6,6 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:task_management/controllers/task_controller.dart';
+import 'package:task_management/main.dart';
 import 'package:task_management/models/task.dart';
 import 'package:task_management/services/notification_services.dart';
 import 'package:task_management/ui/pages/add_task_page.dart';
@@ -29,6 +30,11 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+      selectNotificationSubject.stream.listen((event) {
+        showDialog(context: context, builder: (context1){
+          return SimpleDialog(title: Text(event),);
+        });
+      });
   }
 
   @override
@@ -116,7 +122,7 @@ class _HomePageState extends State<HomePage> {
           MyButton(
             label: "+ Add Task",
             onTap: () async {
-              await Get.to(AddTaskPage());
+              await Get.to(AddTaskPage(""));
               _taskController.getTasks();
             },
           ),

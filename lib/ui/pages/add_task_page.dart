@@ -9,12 +9,16 @@ import 'package:task_management/ui/widgets/input_field.dart';
 import 'package:intl/intl.dart';
 
 class AddTaskPage extends StatefulWidget {
+  String payload;
+
+  AddTaskPage(this.payload);
+
   @override
   _AddTaskPageState createState() => _AddTaskPageState();
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
-  final TaskController _taskController = Get.find<TaskController>();
+  //final TaskController _taskController = Get.find<TaskController>();
 
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _noteController = TextEditingController();
@@ -54,7 +58,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Add Task",
+                "Add Task + payload = ${widget.payload}",
                 style: headingTextStyle,
               ),
               SizedBox(
@@ -224,19 +228,19 @@ class _AddTaskPageState extends State<AddTaskPage> {
   }
 
   _addTaskToDB() async {
-    await _taskController.addTask(
-      task: Task(
-        note: _noteController.text,
-        title: _titleController.text,
-        date: DateFormat.yMd().format(_selectedDate),
-        startTime: _startTime,
-        endTime: _endTime,
-        remind: _selectedRemind,
-        repeat: _selectedRepeat,
-        color: _selectedColor,
-        isCompleted: 0,
-      ),
-    );
+    // await _taskController.addTask(
+    //   task: Task(
+    //     note: _noteController.text,
+    //     title: _titleController.text,
+    //     date: DateFormat.yMd().format(_selectedDate),
+    //     startTime: _startTime,
+    //     endTime: _endTime,
+    //     remind: _selectedRemind,
+    //     repeat: _selectedRepeat,
+    //     color: _selectedColor,
+    //     isCompleted: 0,
+    //   ),
+    // );
   }
 
   _colorChips() {
